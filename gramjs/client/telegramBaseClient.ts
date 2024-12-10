@@ -102,6 +102,8 @@ export interface TelegramClientParams {
      * Language code to be sent when creating the initial connection. Defaults to 'en'.
      */
     langCode?: string;
+
+    langPack?: string;
     /**
      * System lang code to be sent when creating the initial connection. Defaults to 'en'.
      */
@@ -307,7 +309,7 @@ export abstract class TelegramBaseClient {
                 clientParams.systemVersion || os.release().toString() || "1.0",
             appVersion: clientParams.appVersion || "1.0",
             langCode: clientParams.langCode,
-            langPack: "", // this should be left empty.
+            langPack: clientParams.langPack || "",
             systemLangCode: clientParams.systemLangCode,
             proxy: initProxy,
         });
